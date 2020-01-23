@@ -35,7 +35,13 @@ class UsersController < ApplicationController
 
   def update
     @user= User.find(params[:id])
-    if @user.update(user_params)
+    if (user_params[:admin] == "1")
+      admin = true
+    else
+      admin = false
+    end
+    binding.pry
+    if @user.update({:admin => admin})
       redirect_to users_path
     else
       render :edit

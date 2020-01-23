@@ -4,7 +4,7 @@
 class QuestionsController < ApplicationController
 
   before_action :authorize, only: [:new, :create, :edit]
-  before_action :authorize_admin, only: [:new, :create, :edit, :destroy]
+  before_action :authorize_admin, only: [:destroy]
 
   def index
     @questions = Question.all

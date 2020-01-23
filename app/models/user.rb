@@ -1,4 +1,5 @@
 
+
 class User < ApplicationRecord
 
   attr_accessor :password
@@ -11,13 +12,6 @@ class User < ApplicationRecord
     self.password_salt = BCrypt::Engine.generate_salt
     self.password_hash = BCrypt::Engine.hash_secret(password,password_salt)
   end
-
-  # def blacklists_password
-  #   if self.password == "password"
-  #     self.errors.add(:base, "This password is insecure")
-  #   end
-  # end
-
 
   def self.authenticate(email, password)
     user = User.find_by "email = ?", email
